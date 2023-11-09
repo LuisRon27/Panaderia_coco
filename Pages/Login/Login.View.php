@@ -1,37 +1,43 @@
-<!-- Login --> 
+<!-- Login -->
 <section>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Sign-in
-</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        iniciar sesion
+    </button>
 
-<!-- Modal Login-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Modal Login-->
+    <div class="modal fade 100vh" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content p-5 mn-100">
             <div class="modal-header p-5 pb-4 border-bottom-0">
-                <h1 class="fw-bold mb-0 fs-2">Sign up</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body p-5 pt-0">
-                <form action="Pages/Login/Login.Validate.php" method="post">
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control rounded-3" id="email" name="email"
-                            placeholder="name@example.com" required>
-                        <label for="email">Email address</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control rounded-3" id="password" name="password" placeholder="Password" required>
-                        <label for="password" >Password</label>
-                    </div>
-                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
-                    <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
 
+            <div class="modal-body d-flex flex-column justify-content-center align-items-center rounded border shadow mt-5">
+                <img src="/public/coco.png" alt="logo" style="width: 250px; height: 200px; position: absolute; bottom: 73%; ">
+                <form class="mt-5 d-flex flex-column align-items-center w-100" action="Pages/Login/Login.Validate.php" method="post">
+                    <div class="mb-3 w-50">
+                        <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su Usuario" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3 w-50">
+                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su Contraseña">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-50 mx-auto">Ingresar</button>
                 </form>
+                
+                <div class="text-center mt-2">
+                    <span>No tienes cuenta?</span>
+                    <a href="Pages/Register/Register.Cliente.php">Crea una aquí</a>
+                </div>
+                
             </div>
         </div>
     </div>
 </div>
+
 
 </section>
