@@ -15,15 +15,15 @@
             </div>
 
             <div class="modal-body d-flex flex-column justify-content-center align-items-center rounded border shadow mt-5">
-                <img src="/public/coco.png" alt="logo" style="width: 250px; height: 200px; position: absolute; bottom: 73%; ">
+                <img src="public/coco.png" alt="logo" style="width: 250px; height: 200px; position: absolute; bottom: 73%; ">
                 <form class="mt-5 d-flex flex-column align-items-center w-100" action="Pages/Login/Login.Validate.php" method="post">
                     <div class="mb-3 w-50">
-                        <label for="exampleInputEmail1" class="form-label">Usuario</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese su Usuario" aria-describedby="emailHelp">
+                        <label for="UserName" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Ingrese su Usuario" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3 w-50">
-                        <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su Contraseña">
+                        <label for="Password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="Password" id="Password" placeholder="Ingrese su Contraseña">
                     </div>
 
                     <button type="submit" class="btn btn-primary w-50 mx-auto">Ingresar</button>

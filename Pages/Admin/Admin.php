@@ -13,7 +13,7 @@
     <h1>Admin</h1>
     <p>Nombre: <?php echo $_SESSION['Nombre']; ?></p>
     <p>Apellido: <?php echo $_SESSION['Apellido']; ?></p>
-    <p>Email: <?php echo $_SESSION['Email']; ?></p>
+    <p>Email: <?php echo $_SESSION['UserName']; ?></p>
     <a href="../Login/Logout.php">Logout</a>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

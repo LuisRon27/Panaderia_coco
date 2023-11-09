@@ -33,6 +33,10 @@
                 <input type="number" class="form-control" id="Telefono" name="Telefono" required >
             </div>
             <div class="mb-3">
+                <label for="Usuario" class="form-label">Usuario</label>
+                <input type="text" class="form-control" id="Usuario" name="Usuario" required maxlength="200">
+            </div>
+            <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="Email" name="Email" required maxlength="200">
             </div>
@@ -48,13 +52,16 @@
                 <input type="password" class="form-control" id="Password" name="Password" required maxlength="50">
             </div>
             <div class="mb-3">
-                <label for="Direccion" class="form-label">Direccion</label>
-                <input type="text" class="form-control" id="Direccion" name="Direccion" required maxlength="200">
+                <label for="confirmar" class="form-label">Confirme Contraseña</label>
+                <input type="password" class="form-control" id="confirmar"
+                    placeholder="Confirme su contraseña" maxlength="50" required>
             </div>
             <button type="submit" class="btn btn-primary">Continuar</button>
             <a href="" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
+
+    <script src="js/Register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
