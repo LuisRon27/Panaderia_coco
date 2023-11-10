@@ -39,6 +39,7 @@ CREATE TABLE Carrito (
     IDUsuario INT,
     IDProducto INT,
     Cantidad INT,
+    Comentarios TEXT,
     FOREIGN KEY (IDUsuario) REFERENCES Usuarios(IDUsuario),
     FOREIGN KEY (IDProducto) REFERENCES Productos(IDProducto)
 );
@@ -92,10 +93,10 @@ VALUES
     (2, 'Bocados salados', 'Bocados de Jamón, Crudo, Lomito y Matambre', 770, 75, 1, 'https://acdn.mitiendanube.com/stores/001/990/174/products/la-1x1-341-ffad871744a831877816485802795478-1024-1024.webp');
 
 -- Insertar datos de ejemplo en la tabla Carrito
-INSERT INTO Carrito (IDUsuario, IDProducto, Cantidad)
+INSERT INTO Carrito (IDUsuario, IDProducto, Cantidad, Comentarios)
 VALUES
-    (2, 1, 2),
-    (2, 3, 4);
+    (2, 1, 2, 'Facturas con Dulce de leche'),
+    (2, 3, 4, 'Medialunas Calientes');
 
 -- Insertar datos de ejemplo en la tabla Pedidos
 INSERT INTO Pedidos (IDCarrito, DireccionEntrega, MetodoPago, EstadoPedido)

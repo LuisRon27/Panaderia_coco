@@ -21,6 +21,7 @@
                         <label for="UserName" class="form-label">Usuario</label>
                         <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Ingrese su Usuario" aria-describedby="emailHelp">
                     </div>
+
                     <div class="mb-3 w-50">
                         <label for="Password" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" name="Password" id="Password" placeholder="Ingrese su Contraseña">

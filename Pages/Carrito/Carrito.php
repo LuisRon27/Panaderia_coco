@@ -39,14 +39,14 @@
         ?>
             <div class="">
                 <img class="card-img-top" src="<?php echo $fila['ImagenURL'] ?>" alt="<?php echo $fila['Producto'] ?>">
-                <p><?php echo $fila['Producto'] ?></p>
-                <p><?php echo $fila['Precio'] ?></p>
-                <p><?php echo $fila['Cantidad'] ?></p>
+                <p>Producto: <?php echo $fila['Producto'] ?></p>
+                <p>$ <?php echo $fila['Precio'] ?></p>
+                <p>Cantidad: <?php echo $fila['Cantidad'] ?></p>
             </div>
             <!-- TODO: -->
             <form action="../Carrito/ABM/Eliminar.Carrito.php?IDCarrito=<?php echo $fila['IDCarrito'] ?>" method="post">
                 
-                <input type="text" id="IDCarrito" name="IDCarrito" value="<?php echo $fila['IDCarrito'] ?>">
+                <input type="hidden" id="IDCarrito" name="IDCarrito" value="<?php echo $fila['IDCarrito'] ?>">
                 <button type="submit" class="btn btn-danger" ><i class="bi bi-trash-fill"></i></button>
             </form>
         <?php
@@ -56,7 +56,7 @@
     </div>
 
     <!-- Section Precio Total -->
-    <div class="">
+    <div class="d-flex  justify-content-between align-items-center p-2">
         <?php
             require("../../Config/Conexion.php");
 
@@ -75,6 +75,7 @@
         <?php
             }
         ?>
+        <a href="../Pedido/MetodoPago.php" class="btn btn-success">Pagar</a>
     </div>
 
 </div>
