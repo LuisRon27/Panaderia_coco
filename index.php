@@ -24,6 +24,7 @@
                 <li><a href="Pages/Categorias/Categoria.php" class="nav-link px-2 text-body-secondary">Productos</a></li>
                 <li><a href="#" class="nav-link px-2 text-body-secondary">Servicios</a></li>
                 <li><a href="#" class="nav-link px-2 text-body-secondary">Contactos</a></li>
+                <li><a href="#" class="nav-link px-2 text-body-secondary">Nosotros</a></li>
             </ul>
 
             <div class="col-md-3 text-end d-flex ms-5">
