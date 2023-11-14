@@ -9,11 +9,93 @@
 
 <?php require("../Login/Autenticacion.php"); ?>
 <body>
-    <h1>Empleado</h1>
-    <p>Nombre: <?php echo $_SESSION['Nombre']; ?></p>
-    <p>Apellido: <?php echo $_SESSION['Apellido']; ?></p>
-    <p>Email: <?php echo $_SESSION['Email']; ?></p>
-    <a href="../Login/Logout.php">Logout</a>
+    <div class="">
+        <h1>Empleado</h1>
+        <p>Nombre: <?php echo $_SESSION['Nombre']; ?></p>
+        <p>Apellido: <?php echo $_SESSION['Apellido']; ?></p>
+        <a href="../Login/Logout.php">Logout</a>
+    </div>
+
+    <!--Title-->
+    <div class="container mt-3">
+        <h1 class="text-center">Lista de Pedidos</h1>
+    </div>
+
+    <!--Table-->
+    <div class="container">
+        <!-- Campo de búsqueda -->
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar Pedido">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="table-dark text-center table-header">
+                    <tr>
+                        <th scope="col">IDPedido</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Pedido</th>
+                        <th scope="col">FechaPedido</th>
+                        <th scope="col">DireccionEntrega</th>
+                        <th scope="col">MetodoPago</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">MontoTotal</th>
+                        <th scope="col">Cambiar Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    require("../../Config/Conexion.php");
+
+                    $sql = $conexion->query("SELECT P.IDPedido, CONCAT(U.Nombre, ' ', U.Apellido) AS NombreCompleto, P.Pedido, P.FechaPedido, P.DireccionEntrega, P.MetodoPago, P.EstadoPedido, P.MontoTotal 
+                    FROM pedidos P
+                    INNER JOIN usuarios U ON P.IDUsuario = U.IDUsuario
+                    WHERE EstadoPedido = 'Pendiente';");
+
+                    while ($resultado = $sql->fetch_assoc()) {
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $resultado['IDPedido'] ?>
+                            </th>
+                            <td scope="row">
+                                <?php echo $resultado['NombreCompleto'] ?>
+                            </td>
+                            <td scope="row">
+                                <?php echo $resultado['Pedido'] ?>
+                            </td>
+                            <td scope="row">
+                                <?php echo date('d/m/Y', strtotime($resultado['FechaPedido'])); ?>
+                            </td>
+                            <td scope="row">
+                                <?php echo $resultado['DireccionEntrega'] ?>
+                            </td>
+                            <td scope="row">
+                                <?php echo $resultado['MetodoPago'] ?>
+                            </td>
+                            <td scope="row">
+                                <?php echo $resultado['EstadoPedido'] ?>
+                            </td>
+                            <td scope="row">
+                                <?php echo $resultado['MontoTotal'] ?>
+                            </td>
+                            <td scope="row" class="d-flex justify-content-center"
+                                style="gap: 1rem; padding: 1.5rem 0.5rem;">
+                                <a href="ABM/Entregado.Pedido.php?IDPedido=<?php echo $resultado['IDPedido']; ?>"
+                                    class="btn btn-success me-2">Entregado</a>
+                                <a href="ABM/Cancelado.Pedido.php?IDPedido=<?php echo $resultado['IDPedido']; ?>"
+                                onclick="return confirm('¿Seguro que desea cancelar este Pedido?');" class="btn btn-danger">Cancelar</a>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        <div id="noRecordsMessage" class="alert alert-warning text-center" style="display: none;">No hay registros</div>
+        </div>
+    </div>
+
+    <script src="js/Empleado.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

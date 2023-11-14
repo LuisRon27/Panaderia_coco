@@ -46,13 +46,16 @@ CREATE TABLE Carrito (
 
 CREATE TABLE Pedidos (
     IDPedido INT AUTO_INCREMENT PRIMARY KEY,
-    IDCarrito INT,
+    IDUsuario INT,
+    Pedido TEXT,
     FechaPedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     DireccionEntrega NVARCHAR(200) NOT NULL,
     MetodoPago ENUM('MercadoPago', 'Efectivo') NOT NULL,
-    EstadoPedido ENUM('Pendiente', 'Entregado') NOT NULL,
-    FOREIGN KEY (IDCarrito) REFERENCES Carrito(IDCarrito)
+    EstadoPedido ENUM('Pendiente', 'Entregado', 'Cancelado') NOT NULL,
+    MontoTotal FLOAT,
+    FOREIGN KEY (IDUsuario) REFERENCES Usuarios(IDUsuario)
 );
+
 
 CREATE TABLE Inventario (
     IDInventario INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,11 +101,13 @@ VALUES
     (2, 1, 2, 'Facturas con Dulce de leche'),
     (2, 3, 4, 'Medialunas Calientes');
 
--- Insertar datos de ejemplo en la tabla Pedidos
-INSERT INTO Pedidos (IDCarrito, DireccionEntrega, MetodoPago, EstadoPedido)
+-- Insertar datos tabla Pedidos
+INSERT INTO Pedidos (IDUsuario, Pedido, DireccionEntrega, MetodoPago, EstadoPedido, MontoTotal)
 VALUES
-    (1, 'Calle 789, Ciudad', 'MercadoPago', 'Pendiente'),
-    (2, 'Avenida 123, Ciudad', 'Efectivo', 'Entregado');
+    (1, 'Pedido de pan integral', 'Calle 123, Ciudad A', 'MercadoPago', 'Pendiente', 250.50),
+    (2, 'Pedido de pasteles variados', 'Avenida XYZ, Ciudad B', 'Efectivo', 'Entregado', 1200.75),
+    (3, 'Pedido especial sin gluten', 'Calle 789, Ciudad C', 'MercadoPago', 'Pendiente', 180.00);
+
 
 -- Insertar datos de ejemplo en la tabla Inventario
 INSERT INTO Inventario (Nombre, Cantidad, FechaVencimiento, Descripcion)
