@@ -14,7 +14,7 @@
 <body>
 
     <div class="container py-3">
-        <div class="row row-cols-1 row-cols-md-2 mb-3">
+        <div class="row row-cols-1 row-cols-md-1 mb-3">
 
             <!-- Tarjeta de débito o crédito -->
             <div class="col">
@@ -51,7 +51,14 @@
 
             <!-- Detalle de Pago -->
             <div class="col">
-                <form action="crud/Insertar.Pago.php" method="post" class="card mb-4 rounded-3 shadow-sm p-3">
+
+
+                <form action="../ABM/Insertar.Pago.php" method="post" class="card mb-4 rounded-3 shadow-sm p-3">
+
+                    <div class="mb-3 ms-3">
+                        <label for="DireccionEntrega" class="form-label">Direccion de Entrega</label>
+                        <input type="text" class="form-control" id="DireccionEntrega" name="DireccionEntrega" required>
+                    </div>
 
                     <h4 class="card-title text-center my-2">Detalle de Pago</h4>
 
@@ -71,6 +78,10 @@
                             <p>#:
                                 <?php echo $_SESSION['IDUsuario'] ?>
                             </p>
+
+                            <!-- Campos ocultos -->
+                            <input type="hidden" name="IDUsuario" id="IDUsuario" value="<?php echo $_SESSION['IDUsuario'] ?>">
+
                             <p>Fecha:
                                 <?php echo date('Y-m-d') ?>
                             </p>
@@ -93,19 +104,17 @@
                         ?>
                     </div>
 
-                    <!-- Detalle de la compra -->
-                    <div class="">
-                        <h5 class="text-center" >Detalle de compra</h5>
-                        <?php
-                        require("../../../Config/Conexion.php");
+                    <?php
+                    require("../../../Config/Conexion.php");
 
-                        $IDUsuario = $_SESSION['IDUsuario'];
-                        $sql = "SELECT 
+                    $IDUsuario = $_SESSION['IDUsuario'];
+                    $sql = "SELECT 
                                 P.Nombre AS Producto,
                                 P.Precio,
                                 C.Comentarios,
                                 C.Cantidad,
-                                C.IDCarrito
+                                C.IDCarrito,
+                                C.IDProducto
                                 FROM
                                 carrito C
                                     INNER JOIN
@@ -115,27 +124,53 @@
                                 WHERE
                                 C.IDUsuario = $IDUsuario";
 
-                        $resultado = mysqli_query($conexion, $sql);
+                    $resultado = mysqli_query($conexion, $sql);
 
-                        while ($fila = mysqli_fetch_assoc($resultado)) {
-                            ?>
-                            <p>Producto:
-                                <?php echo $fila['Producto'] ?>
-                            </p>
-                            <p>Precio:
-                                <?php echo $fila['Precio'] ?>
-                            </p>
-                            <p>Comentarios:
-                                <?php echo $fila['Comentarios'] ?>
-                            </p>
-                            <p>Cantidad:
-                                <?php echo $fila['Cantidad'] ?>
-                            </p>
-                            <?php
-                        }
-                        ?>
+                    $dataForTextarea = array(); // Initialize array for textarea
+                    $dataForTextarea2 = array();
 
-                    </div>
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                        // Add data for the first set
+                        $dataForTextarea[] = array(
+                            $fila['Producto'],
+                            
+                        );
+
+                        // Add data for the second set
+                        $dataForTextarea2[] = array(
+                            'Producto' => $fila['Producto'],
+                            'Precio' => $fila['Precio'],
+                            'Comentarios' => $fila['Comentarios'],
+                            'Cantidad' => $fila['Cantidad'],
+                            'IDProducto' => $fila['IDProducto'],
+                        );
+                    }
+                    ?>
+
+                    <!-- Detalle de la compra -->
+                    <?php foreach ($dataForTextarea2 as $data): ?>
+                        <p>Producto: <?php echo isset($data['Producto']) ? $data['Producto'] : ''; ?></p>
+                        <p>Precio: <?php echo isset($data['Precio']) ? $data['Precio'] : ''; ?></p>
+                        <p>Comentarios: <?php echo isset($data['Comentarios']) ? $data['Comentarios'] : ''; ?></p>
+                        <p>Cantidad: <?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?></p>
+
+                        <!-- Add hidden inputs for each product's IDProducto and Cantidad -->
+                        <input type="hidden" name="IDProducto[]" value="<?php echo isset($data['IDProducto']) ? $data['IDProducto'] : ''; ?>">
+                        <input type="hidden" name="Cantidad[]" value="<?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?>">
+                    <?php endforeach; ?>
+
+
+                    <!-- Campo oculto productos -->
+                    <input type="hidden" name="Pedido" id="Pedido"  value="<?php
+                            // Get the JSON-encoded string
+                            $jsonString = json_encode($dataForTextarea);
+                            
+                            // Remove double quotes, curly braces, and square brackets
+                            $cleanedJson = str_replace(['"', '{', '}', '[', ']'], '', $jsonString);
+                            
+                            // Output the trimmed and formatted text
+                            echo $cleanedJson;
+                        ?>" >
 
                     <!-- Section Precio Total -->
                     <div class="d-flex  justify-content-between align-items-center p-2">
@@ -156,9 +191,13 @@
                                 <h5>Precio Total: $
                                     <?php echo $resultado['PrecioTotal'] ?>
                                 </h5>
+                                <!-- Campo oculto -->
+                                <input type="hidden" value="<?php echo $resultado['PrecioTotal'] ?>" name="MontoTotal" id="MontoTotal">
                                 <?php
                             }
                         ?>
+
+                        
                     </div>
 
                     <div class="text-center mb-3">

@@ -16,7 +16,7 @@
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">En Panadería Coco, te ofrecemos dos opciones sencillas para realizar tu pago:</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Efectivo</button>
+                <a href="Efectivo/Efectivo.php" class="btn btn-primary btn-lg px-4 gap-3">Efectivo</a>
                 <a href="MercadoPago/MercadoPago.php" class="btn btn-outline-secondary btn-lg px-4">MercadoPago</a>
             </div>
         </div>

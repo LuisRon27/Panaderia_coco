@@ -92,7 +92,7 @@
                                         <div class="container">
                                             <h4>Cantidad</h4>
                                             <div class="contador">
-                                                <input type="text" class="numero"
+                                                <input type="text" class="numero" name="Cantidad"
                                                     data-producto-id="<?php echo $fila['IDProducto'] ?>" value="0">
                                             </div>
                                             <a class="btn btn-primary"
