@@ -1,4 +1,11 @@
+*{
+    font-family: 'Bodoni Moda', serif;
+}
 
+.nav-link:hover {
+    background-color: gray;
+    border-radius: 3px;
+}
 .carousel-item{
     height: 80vh;
     min-height: 300px;
