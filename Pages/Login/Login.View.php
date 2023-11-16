@@ -2,7 +2,7 @@
 <section>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-link text-decoration-none text-body-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-light mx-2 text-decoration-none text-body-secondary fs-5"  data-bs-toggle="modal" data-bs-target="#exampleModal">
         Iniciar Sesión
     </button>
 
