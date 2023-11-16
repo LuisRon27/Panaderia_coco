@@ -93,7 +93,7 @@
                             </svg>
                         </div>
                         <h3 class="fs-2 text-body-emphasis">Panificados</h3>
-                        <p>Nuestro servicio de panificación se esmera en ofrecer una experiencia deliciosa y reconfortante a través de una amplia variedad de panes frescos y artesanales.</p>
+                        <p class="">Nuestro servicio de panificación se esmera en ofrecer una experiencia deliciosa y reconfortante a través de una amplia variedad de panes frescos y artesanales.</p>
                         <button class="btn btn-outline-secondary d-inline-flex align-items-center" type="button">
                             Ver Productos
                             <svg class="bi ms-1" width="20" height="20">
