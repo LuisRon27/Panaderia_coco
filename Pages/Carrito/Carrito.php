@@ -2,7 +2,9 @@
 
 <!-- Carrito De Compras-->
 <div class="d-flex justify-content-end">
-    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Carrito</button>
+    <button class="btn btn-outline-secondary w-25" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <i class="bi bi-cart-fill fs-5"></i>
+    </button>
 </div>
 <div class="offcanvas offcanvas-end w-25" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
 

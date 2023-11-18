@@ -60,7 +60,8 @@
                         <img src="/public/Img1.jpg" class="d-block w-100 darken-image" alt="home1" id="img">
                         <div class="carousel-caption ">
                             <h5>LOS MAS RICOS SABORES</h5>
-                            <p>En nuestra panadería, nos enorgullecemos de ofrecer 'Los Más Ricos Sabores' en cada
+                            <p class="fs-5">En nuestra panadería, nos enorgullecemos de ofrecer 'Los Más Ricos Sabores'
+                                en cada
                                 creación que sale de nuestro horno. Cada pan recién horneado, cada pastel
                                 meticulosamente decorado y cada delicia dulce o salada es una sinfonía de sabores
                                 exquisitos que despiertan los sentidos y deleitan el paladar.
@@ -72,7 +73,8 @@
                             class="d-block w-100 darken-image" alt="..." id="img">
                         <div class="carousel-caption ">
                             <h5>HECHO CON CALIDAD</h5>
-                            <p>En nuestra panadería, cada creación es un testimonio de dedicación artesanal y compromiso
+                            <p class="fs-5">En nuestra panadería, cada creación es un testimonio de dedicación artesanal
+                                y compromiso
                                 con la excelencia.
                                 ¡Disfruta de la exquisitez que solo la calidad auténtica puede ofrecer en cada producto
                                 que sale de nuestro horno!"
@@ -85,7 +87,8 @@
                             class="d-block w-100 darken-image" alt="..." id="img">
                         <div class="carousel-caption ">
                             <h5>Elaborado con cariño</h5>
-                            <p>En nuestra panadería, cada producto es más que un simple manjar: es una obra maestra. Nos
+                            <p class="fs-5">En nuestra panadería, cada producto es más que un simple manjar: es una obra
+                                maestra. Nos
                                 dedicamos a crear una experiencia única en cada bocado, donde cada pan, pastel y delicia
                                 horneada está impregnada con el amor y cuidado que solo se encuentra en los sabores
                                 caseros.</p>
@@ -158,7 +161,7 @@
                         alt="">
 
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-4 border-bottom">
                     <h3 class="fs-2 text-body-emphasis lh-1 mb-3">Sobre Nosotros</h3>
                     <p class="fs-5">Bienvenido a Panadería Coco, el hogar del sabor auténtico y la tradición horneada.
                         Somos una franquicia apasionada por llevar a tu mesa

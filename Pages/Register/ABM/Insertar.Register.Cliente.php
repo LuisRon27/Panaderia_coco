@@ -21,7 +21,11 @@ if ($stmt) {
     $stmt->bind_param("sssssssi", $Nombre, $Apellido, $Telefono, $Email, $UserName, $Password, $Rol, $Activo);
 
     if ($stmt->execute()) {
-        header("Location: ../../../index.php");
+        //header("Location: ../../../index.php");
+        echo "Usuario creado Exitosamente. <a href='../../../index.php' class='btn btn-outline-secondary'>
+        Volver al inicio
+    </a>";
+
         exit;
     } else {
         echo "Error al guardar los datos en la base de datos.";
@@ -33,4 +37,3 @@ if ($stmt) {
 }
 
 $conexion->close();
-?>

@@ -14,17 +14,19 @@
 <body>
 
     <div class="container py-3">
-        <div class="row row-cols-1 row-cols-md-2 mb-3">
+        <div class="row mb-3">
 
             <!-- Detalle de Pago -->
-            <div class="col">
+            <div class="col-12">
 
 
                 <form action="../ABM/Insertar.PagoEfectivo.php" method="post" class="card mb-4 rounded-3 shadow-sm p-3">
 
                     <div class="mb-3 ms-3">
-                        <label for="DireccionEntrega" class="form-label">Direccion de Entrega</label>
-                        <input type="text" class="form-control" id="DireccionEntrega" name="DireccionEntrega" required>
+                        <label for="DireccionEntrega" class="form-label fw-bold">Direccion de Entrega</label>
+                        <input type="text" class="form-control"
+                            placeholder="Este campo sera usado para saber su ubicacion" id="DireccionEntrega"
+                            name="DireccionEntrega" required>
                     </div>
 
                     <h4 class="card-title text-center my-2">Detalle de Pago</h4>
@@ -32,8 +34,8 @@
                     <hr>
 
                     <!-- Datos del Cliente -->
-                    <div class="">
-                        <h5 class="" >Datos del Cliente</h5>
+                    <div class="border-bottom">
+                        <h5 class="">Datos del Cliente</h5>
                         <?php
                         require("../../../Config/Conexion.php");
 
@@ -41,32 +43,33 @@
                         $sql = $conexion->query("SELECT Nombre, Apellido, Telefono, Email FROM Usuarios WHERE IDUsuario = $IDUsuario;");
 
                         while ($resultado = $sql->fetch_assoc()) {
-                            ?>
-                            <p>#:
-                                <?php echo $_SESSION['IDUsuario'] ?>
-                            </p>
+                        ?>
+                        <p>#:
+                            <?php echo $_SESSION['IDUsuario'] ?>
+                        </p>
 
-                            <!-- Campos ocultos -->
-                            <input type="hidden" name="IDUsuario" id="IDUsuario" value="<?php echo $_SESSION['IDUsuario'] ?>">
+                        <!-- Campos ocultos -->
+                        <input type="hidden" name="IDUsuario" id="IDUsuario"
+                            value="<?php echo $_SESSION['IDUsuario'] ?>">
 
-                            <p>Fecha:
-                                <?php echo date('Y-m-d') ?>
-                            </p>
-                            <p>Nombre:
-                                <?php echo $resultado['Nombre'] ?>
-                            </p>
-                            <p>Apellido:
-                                <?php echo $resultado['Apellido'] ?>
-                            </p>
-                            <p>Telefono:
-                                <?php echo $resultado['Telefono'] ?>
-                            </p>
-                            <p>Email:
-                                <?php echo $resultado['Email'] ?>
-                            </p>
+                        <p>Fecha:
+                            <?php echo date('Y-m-d') ?>
+                        </p>
+                        <p>Nombre:
+                            <?php echo $resultado['Nombre'] ?>
+                        </p>
+                        <p>Apellido:
+                            <?php echo $resultado['Apellido'] ?>
+                        </p>
+                        <p>Telefono:
+                            <?php echo $resultado['Telefono'] ?>
+                        </p>
+                        <p>Email:
+                            <?php echo $resultado['Email'] ?>
+                        </p>
 
 
-                            <?php
+                        <?php
                         }
                         ?>
                     </div>
@@ -100,7 +103,7 @@
                         // Add data for the first set
                         $dataForTextarea[] = array(
                             $fila['Producto'],
-                            
+
                         );
 
                         // Add data for the second set
@@ -115,56 +118,62 @@
                     ?>
 
                     <!-- Detalle de la compra -->
-                    <?php foreach ($dataForTextarea2 as $data): ?>
-                        <p>Producto: <?php echo isset($data['Producto']) ? $data['Producto'] : ''; ?></p>
-                        <p>Precio: <?php echo isset($data['Precio']) ? $data['Precio'] : ''; ?></p>
-                        <p>Comentarios: <?php echo isset($data['Comentarios']) ? $data['Comentarios'] : ''; ?></p>
-                        <p>Cantidad: <?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?></p>
 
-                        <!-- Add hidden inputs for each product's IDProducto and Cantidad -->
-                        <input type="hidden" name="IDProducto[]" value="<?php echo isset($data['IDProducto']) ? $data['IDProducto'] : ''; ?>">
-                        <input type="hidden" name="Cantidad[]" value="<?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?>">
+                    <?php foreach ($dataForTextarea2 as $data) : ?>
+                    <p>Producto: <?php echo isset($data['Producto']) ? $data['Producto'] : ''; ?></p>
+                    <p>Precio: <?php echo isset($data['Precio']) ? $data['Precio'] : ''; ?></p>
+                    <p>Comentarios: <?php echo isset($data['Comentarios']) ? $data['Comentarios'] : ''; ?></p>
+                    <p>Cantidad: <?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?></p>
+
+                    <!-- Add hidden inputs for each product's IDProducto and Cantidad -->
+                    <input type="hidden" name="IDProducto[]"
+                        value="<?php echo isset($data['IDProducto']) ? $data['IDProducto'] : ''; ?>">
+                    <input type="hidden" name="Cantidad[]"
+                        value="<?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?>">
                     <?php endforeach; ?>
 
 
+
+
                     <!-- Campo oculto productos -->
-                    <input type="hidden" name="Pedido" id="Pedido"  value="<?php
-                            // Get the JSON-encoded string
-                            $jsonString = json_encode($dataForTextarea);
-                            
-                            // Remove double quotes, curly braces, and square brackets
-                            $cleanedJson = str_replace(['"', '{', '}', '[', ']'], '', $jsonString);
-                            
-                            // Output the trimmed and formatted text
-                            echo $cleanedJson;
-                        ?>" >
+                    <input type="hidden" name="Pedido" id="Pedido" value="<?php
+                                                                            // Get the JSON-encoded string
+                                                                            $jsonString = json_encode($dataForTextarea);
+
+                                                                            // Remove double quotes, curly braces, and square brackets
+                                                                            $cleanedJson = str_replace(['"', '{', '}', '[', ']'], '', $jsonString);
+
+                                                                            // Output the trimmed and formatted text
+                                                                            echo $cleanedJson;
+                                                                            ?>">
 
                     <!-- Section Precio Total -->
                     <div class="d-flex  justify-content-between align-items-center p-2">
                         <?php
-                            require("../../../Config/Conexion.php");
+                        require("../../../Config/Conexion.php");
 
 
-                            $IDUsuario = $_SESSION['IDUsuario'];
+                        $IDUsuario = $_SESSION['IDUsuario'];
 
-                            $sql = $conexion->query("SELECT SUM(P.Precio * C.Cantidad) AS PrecioTotal
+                        $sql = $conexion->query("SELECT SUM(P.Precio * C.Cantidad) AS PrecioTotal
                                     FROM carrito C
                                     INNER JOIN usuarios U ON C.IDUsuario  =  U.IDUsuario
                                     INNER JOIN productos P ON C.IDProducto = P.IDProducto
                                     WHERE C.IDUsuario = $IDUsuario;");
 
-                            while ($resultado = $sql->fetch_assoc()) {
-                                ?>
-                                <h5>Precio Total: $
-                                    <?php echo $resultado['PrecioTotal'] ?>
-                                </h5>
-                                <!-- Campo oculto -->
-                                <input type="hidden" value="<?php echo $resultado['PrecioTotal'] ?>" name="MontoTotal" id="MontoTotal">
-                                <?php
-                            }
+                        while ($resultado = $sql->fetch_assoc()) {
+                        ?>
+                        <h5>Precio Total: $
+                            <?php echo $resultado['PrecioTotal'] ?>
+                        </h5>
+                        <!-- Campo oculto -->
+                        <input type="hidden" value="<?php echo $resultado['PrecioTotal'] ?>" name="MontoTotal"
+                            id="MontoTotal">
+                        <?php
+                        }
                         ?>
 
-                        
+
                     </div>
 
                     <div class="text-center mb-3">
@@ -181,8 +190,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

@@ -3,11 +3,13 @@ require("../../../Config/Conexion.php");
 
 if (isset($_GET['IDCarrito'])) {
     $carritoId = $_GET['IDCarrito'];
-    $IDCategoria = $_POST['IDCategoria'];
+    //$IDCategoria = $_POST['IDCategoria'];
     //echo $IDCategoria; die();
 
     // Realiza la eliminación 
     $sql = "DELETE FROM carrito WHERE IDCarrito = $carritoId";
+    //echo $sql;
+    //die();
     $resultado = mysqli_query($conexion, $sql);
 
     if ($resultado) {
@@ -19,4 +21,3 @@ if (isset($_GET['IDCarrito'])) {
 } else {
     echo "IDCarrito no proporcionado.";
 }
-?>
