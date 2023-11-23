@@ -38,30 +38,28 @@
 
     <h1 class="text-center mt-4">Cual es su antojo para hoy?</h1>
 
-    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3 justify-content-center mt-3">
-        <div class="bg-primary-subtle me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded">
-            <div class="my-3 py-3">
-                <a href="../Productos/Productos.php?IDCategoria=1" class="btn btn-outline-secondary fs-3 w-100 ">Mundo
-                    Dulce</a>
-                <p class="lead mt-2">Descubre todo el sabor de nuestras elaboraciones dulces.</p>
+    <div class="container-fluid">
+        <div class="row g-0">
+            <div class="col-6 d-flex justify-content-center">
+                <img src="https://media.istockphoto.com/id/528050758/es/foto/varios-dulces-reci%C3%A9n-horneadas-bollos-de.jpg?s=612x612&w=0&k=20&c=I9OqVHYhccajgUzbDuLKtHa1vyALJ3dThxBuALXYMlY=" class="img-fluid rounded h-100 w-100 darken-image" alt="...">
+                <div class="position-absolute overlay-component bottom-50">
+
+                    <a href="../Productos/Productos.php?IDCategoria=1" class="btn btn-outline-light fs-3 w-100 ">Mundo
+                        Dulce</a>
+                    <p class="lead mt-2 text-light">Descubre todo el sabor de nuestras elaboraciones dulces.</p>
+                </div>
             </div>
+            <div class="col-6 d-flex justify-content-center">
+                <img src="https://media.istockphoto.com/id/1144562350/es/foto/pan-fresco-en-una-tabla-de-cortar-y-sal.jpg?s=612x612&w=0&k=20&c=V66d5jXTEQZ5eY7CTmf6gnIbCwa_RIRnKY6erySw828=" class="img-fluid rounded h-100 w-100 darken-image" alt="...">
+                <div class="position-absolute overlay-component bottom-50">
 
-            <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-        </div>
-        <div class="bg-primary-subtle me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden rounded">
-            <div class="my-3 p-3">
-                <a href="../Productos/Productos.php?IDCategoria=2" class="btn btn-outline-secondary fs-3 w-100">Mundo
-                    Salado</a>
-                <p class="lead mt-2">Descubre la magia de nuestras creaciones saladas.</p>
-            </div>
-
-            <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-
+                    <a href="../Productos/Productos.php?IDCategoria=2" class="btn btn-outline-light fs-3 w-100 ">Mundo
+                        Salado</a>
+                    <p class="lead mt-2 text-light">Descubre la magia de nuestras elaboraciones saladas</p>
+                </div>
             </div>
         </div>
     </div>
-
-
 
 
     <?php include("../../Components/Footer/Footer.php"); ?>

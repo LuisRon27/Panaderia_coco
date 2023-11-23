@@ -33,4 +33,3 @@ if ($stmt) {
 }
 
 $conexion->close();
-?>

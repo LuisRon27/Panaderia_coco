@@ -120,16 +120,18 @@
                     <!-- Detalle de la compra -->
 
                     <?php foreach ($dataForTextarea2 as $data) : ?>
-                    <p>Producto: <?php echo isset($data['Producto']) ? $data['Producto'] : ''; ?></p>
-                    <p>Precio: <?php echo isset($data['Precio']) ? $data['Precio'] : ''; ?></p>
-                    <p>Comentarios: <?php echo isset($data['Comentarios']) ? $data['Comentarios'] : ''; ?></p>
-                    <p>Cantidad: <?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?></p>
+                    <div class="border-bottom">
+                        <p>Producto: <?php echo isset($data['Producto']) ? $data['Producto'] : ''; ?></p>
+                        <p>Precio: ARS<?php echo isset($data['Precio']) ? $data['Precio'] : ''; ?></p>
+                        <p>Comentarios: <?php echo isset($data['Comentarios']) ? $data['Comentarios'] : ''; ?></p>
+                        <p>Cantidad: <?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?></p>
 
-                    <!-- Add hidden inputs for each product's IDProducto and Cantidad -->
-                    <input type="hidden" name="IDProducto[]"
-                        value="<?php echo isset($data['IDProducto']) ? $data['IDProducto'] : ''; ?>">
-                    <input type="hidden" name="Cantidad[]"
-                        value="<?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?>">
+                        <!-- Add hidden inputs for each product's IDProducto and Cantidad -->
+                        <input type="hidden" name="IDProducto[]"
+                            value="<?php echo isset($data['IDProducto']) ? $data['IDProducto'] : ''; ?>">
+                        <input type="hidden" name="Cantidad[]"
+                            value="<?php echo isset($data['Cantidad']) ? $data['Cantidad'] : ''; ?>">
+                    </div>
                     <?php endforeach; ?>
 
 

@@ -5,26 +5,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 
 <?php require("../Login/Autenticacion.php"); ?>
 
 <body>
-    <h1>Admin</h1>
-    <p>Nombre:
-        <?php echo $_SESSION['Nombre']; ?>
-    </p>
-    <p>Apellido:
-        <?php echo $_SESSION['Apellido']; ?>
-    </p>
-    <a class="btn btn-warning" href="../Login/Logout.php">Logout</a>
-    <a class="btn btn-primary" href="../Register/Register.Admin.php">Registrar Empleado</a>
+    <h3 class="text-center mt-2">Panel de administracion</h3>
+    <div class="d-flex justify-content-around py-2">
+        <div class="fw-bold">
+            <span>Administrador: <?php echo $_SESSION['Nombre']; ?> <?php echo $_SESSION['Apellido']; ?></span>
+        </div>
+        <div class="d-flex">
+            <a class="btn btn-outline-danger  mx-2" href="../Login/Logout.php">Logout</a>
+            <a class="btn btn-outline-primary " href="../Register/Register.Admin.php">Registrar Empleado</a>
+        </div>
+    </div>
+
+
 
     <!-- Resumen -->
-    <div class="container px-4 py-5" id="icon-grid">
+    <div class="container px-4 py-5 border shadow" id="icon-grid">
         <h2 class="pb-2 border-bottom">Resumen -
             <?php echo date('d/m/Y'); ?>
         </h2>
@@ -37,7 +40,7 @@
             // 1. Usuarios Activos
             $queryUsuarios = $conexion->query("SELECT COUNT(*) AS CantidadUsuariosActivos FROM Usuarios WHERE Activo = 1");
             if ($rowUsuarios = $queryUsuarios->fetch_assoc()) {
-                ?>
+            ?>
                 <div class="col d-flex align-items-start">
                     <i class="bi bi-people-fill text-body-secondary flex-shrink-0 me-3" style="font-size: 2rem;"></i>
                     <div>
@@ -47,7 +50,7 @@
                         </p>
                     </div>
                 </div>
-                <?php
+            <?php
             } else {
                 echo "Error en la consulta de Usuarios: " . $conexion->error;
             }
@@ -60,7 +63,7 @@
                                                 GROUP BY Categorias.Descripcion;");
 
             if ($queryProductos) {
-                ?>
+            ?>
                 <div class="col d-flex align-items-start">
                     <i class="bi bi-tags text-body-secondary flex-shrink-0 me-3" style="font-size: 2rem;"></i>
                     <div>
@@ -81,7 +84,7 @@
             $queryPedidos = $conexion->query("SELECT EstadoPedido, SUM(MontoTotal) AS SumaMontoTotal FROM Pedidos GROUP BY EstadoPedido;");
             if ($queryPedidos) {
                 while ($rowPedidos = $queryPedidos->fetch_assoc()) {
-                    ?>
+                ?>
                     <div class="col d-flex align-items-start">
                         <i class="bi bi-cash-stack text-body-secondary flex-shrink-0 me-3" style="font-size: 2rem;"></i>
                         <div>
@@ -90,7 +93,7 @@
                             <p>Monto Total: $ <?php echo $rowPedidos['SumaMontoTotal']; ?></p>
                         </div>
                     </div>
-                    <?php
+                <?php
                 }
             } else {
                 echo "Error en la consulta de Pedidos: " . $conexion->error;
@@ -109,7 +112,7 @@
                         </p>
                     </div>
                 </div>
-                <?php
+            <?php
             } else {
                 echo "Error en la consulta de Productos Próximos a Vencer: " . $conexion->error;
             }
@@ -117,7 +120,7 @@
             // 5. Suma Total del Stock de Productos
             $querySumaStock = $conexion->query("SELECT SUM(Stock) AS SumaTotalStock FROM Productos;");
             if ($rowSumaStock = $querySumaStock->fetch_assoc()) {
-                ?>
+            ?>
                 <div class="col d-flex align-items-start">
                     <i class="bi bi-box text-body-secondary flex-shrink-0 me-3" style="font-size: 2rem;"></i>
                     <div>
@@ -127,7 +130,7 @@
                         </p>
                     </div>
                 </div>
-                <?php
+            <?php
             } else {
                 echo "Error en la consulta de Suma Total del Stock: " . $conexion->error;
             }
@@ -136,9 +139,8 @@
             ?>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
